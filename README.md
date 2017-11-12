@@ -15,6 +15,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 * [Webpack](https://webpack.github.io/docs/tutorials/getting-started/)
 * [Webpack Getting Started](https://webpack.js.org/guides/getting-started/)
 * [Material Design Lite](https://github.com/google/material-design-lite)
+* [Firebase](https://www.npmjs.com/package/firebase)
 
 ### NoBackend App with Firebase
 
@@ -30,4 +31,13 @@ git@github.com:katgironpe/contacts-js.git
 
 ```bash
 npm i
+```
+
+### Using Webpack
+
+* We use Webpack for transpiling ES6 to ES5 and other tasks
+* Read `webpack.config.js`
+
+```bash
+webpack
 ```
