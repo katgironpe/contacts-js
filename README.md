@@ -16,6 +16,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 * [Webpack Getting Started](https://webpack.js.org/guides/getting-started/)
 * [Material Design Lite](https://github.com/google/material-design-lite)
 * [Firebase](https://www.npmjs.com/package/firebase)
+* [Blueimp](https://github.com/blueimp/JavaScript-Templates/blob/master/README.md)
 
 ### NoBackend App with Firebase
 
