@@ -30,6 +30,12 @@ You need to make sure have Node.js installed on your computer. These commands sh
 git@github.com:katgironpe/contacts-js.git
 ```
 
+### Install ESLint
+
+```
+npm i eslint -g
+```
+
 ### Install the dependencies
 
 ```bash
