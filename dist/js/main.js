@@ -11396,23 +11396,22 @@ exports.RangedFilter = RangedFilter;
 
 /***/ }),
 /* 57 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase_app__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_firebase_auth__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_firebase_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_firebase_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_database__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase_database__);
+var _app = __webpack_require__(58);
 
-// These imports load individual services into the firebase namespace.
+var firebase = _interopRequireWildcard(_app);
 
+__webpack_require__(78);
 
+__webpack_require__(80);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 // Firebase config
-let config = {
+
+// These imports load individual services into the firebase namespace.
+var config = {
   apiKey: "AIzaSyB2N3_biz5P3wz7CFrPjyfvETC6_5nP5q8",
   authDomain: "contacts-js-17026.firebaseapp.com",
   databaseURL: "https://contacts-js-17026.firebaseio.com",
@@ -11421,7 +11420,7 @@ let config = {
   messagingSenderId: "41072061162"
 };
 
-__WEBPACK_IMPORTED_MODULE_0_firebase_app__["initializeApp"](config);
+firebase.initializeApp(config);
 
 /***/ }),
 /* 58 */

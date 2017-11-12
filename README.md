@@ -17,6 +17,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 * [Material Design Lite](https://github.com/google/material-design-lite)
 * [Firebase](https://www.npmjs.com/package/firebase)
 * [Blueimp](https://github.com/blueimp/JavaScript-Templates/blob/master/README.md)
+* [Redux](https://github.com/reactjs/redux)
 
 ### NoBackend App with Firebase
 
