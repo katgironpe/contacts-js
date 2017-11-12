@@ -18,6 +18,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 * [Firebase](https://www.npmjs.com/package/firebase)
 * [Blueimp](https://github.com/blueimp/JavaScript-Templates/blob/master/README.md)
 * [Redux](https://github.com/reactjs/redux)
+* [Immutability Helper](https://github.com/kolodny/immutability-helper)
 
 ### NoBackend App with Firebase
 

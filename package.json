@@ -27,6 +27,7 @@
   "dependencies": {
     "blueimp-tmpl": "^3.11.0",
     "firebase": "^4.6.2",
+    "immutability-helper": "^2.5.0",
     "material-design-lite": "^1.3.0",
     "redux": "^3.7.2"
   }
