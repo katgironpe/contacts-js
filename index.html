@@ -21,5 +21,21 @@
 
     <!-- Add your site or application content here -->
     <p>Hello world! This is HTML5 Boilerplate.</p>
+
+    <!-- Firebase JS should always be loaded before the app's main.js -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB2N3_biz5P3wz7CFrPjyfvETC6_5nP5q8",
+        authDomain: "contacts-js-17026.firebaseapp.com",
+        databaseURL: "https://contacts-js-17026.firebaseio.com",
+        projectId: "contacts-js-17026",
+        storageBucket: "contacts-js-17026.appspot.com",
+        messagingSenderId: "41072061162"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </body>
 </html

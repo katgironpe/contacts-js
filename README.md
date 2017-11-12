@@ -22,6 +22,6 @@ You need to make sure have Node.js installed on your computer. These commands sh
 
 ### Install Webpack Globally
 
-```
+```bash
 npm install webpack -g
 ```
