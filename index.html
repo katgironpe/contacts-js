@@ -10,8 +10,8 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="assets/images/icon.png">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <!--[if lte IE 9]>
@@ -19,8 +19,30 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Address Book</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="">Sign in</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Contacts</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Sign in</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here --></div>
+      </main>
+    </div>
     <script src="dist/js/main.js"></script>
+    <script src="node_modules/material-design-lite/material.min.js"></script>
   </body>
-</html
+  </html
