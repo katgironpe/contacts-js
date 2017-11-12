@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/katgironpe/contacts-js/issues"
   },
-  "homepage": "https://github.com/katgironpe/contacts-js#readme"
+  "homepage": "https://github.com/katgironpe/contacts-js#readme",
+  "devDependencies": {
+    "webpack": "^3.8.1"
+  }
 }

@@ -13,6 +13,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 ### Important references on dependencies
 
 * <a href="https://webpack.github.io/docs/tutorials/getting-started/" target="_blank">Webpack</a>
+* <a href="https://webpack.js.org/guides/getting-started/" target="_blank">Webpack: Getting Started</a>
 
 ### Install Webpack Globally
 
