@@ -10,6 +10,10 @@ Address book app in modern JavaScript. Created for open university Programming F
 
 You need to make sure have Node.js installed on your computer. These commands should work: `npm` and `node`.
 
+### Important references on dependencies
+
+* <a href="https://webpack.github.io/docs/tutorials/getting-started/" target="_blank">Webpack</a>
+
 ### Install Webpack Globally
 
 ```
