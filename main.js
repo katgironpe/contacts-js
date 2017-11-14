@@ -4,10 +4,10 @@ let app = express();
 
 let htmlPath = path.join(__dirname, './');
 
+
+app.set('port', (process.env.PORT || 5000));
 app.use(express.static(htmlPath));
 
-let server = app.listen(5000, function () {
-  let host = 'localhost';
-  let port = server.address().port;
-  console.log(`listening on http://${host}:${port}/`);
+app.listen(app.get('port'), function() {
+  console.log('The app is running on port', app.get('port'));
 });
