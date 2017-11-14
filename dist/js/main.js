@@ -13714,11 +13714,17 @@ function Contact() {
     case _constants.CONTACTS_RESET:
       return _extends({}, state, { errors: null, fetchingContacts: false });
 
+    case _constants.CONTACT_ADDING:
+      return _extends({}, state, { addingContact: true });
+
     case _constants.CONTACT_ADDED:
-      return _extends({}, state, { contacts: action.message });
+      return _extends({}, state, { contacts: action.message, addingContact: false });
+
+    case _constants.CONTACT_REMOVING:
+      return _extends({}, state, { removingContact: true });
 
     case _constants.CONTACT_REMOVED:
-      return _extends({}, state, { contacts: action.message });
+      return _extends({}, state, { contacts: action.message, removingContact: false });
 
     default:
       return state;

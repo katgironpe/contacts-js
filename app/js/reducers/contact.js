@@ -5,8 +5,9 @@ import {
   CONTACTS_UNFAVE,
   CONTACTS_UNFAVED,
   CONTACTS_RECEIVED,
-  CONTACTS_ADDING,
+  CONTACT_ADDING,
   CONTACT_ADDED,
+  CONTACT_REMOVING,
   CONTACT_REMOVED,
   CONTACTS_RESET
 } from '../constants';
@@ -26,11 +27,17 @@ export default function Contact (state = initialState, action) {
     case CONTACTS_RESET:
       return { ...state, errors: null, fetchingContacts: false };
 
+    case CONTACT_ADDING:
+      return { ...state, addingContact: true };
+
     case CONTACT_ADDED:
-      return { ...state, contacts: action.message };
+      return { ...state, contacts: action.message, addingContact: false };
+
+    case CONTACT_REMOVING:
+      return { ...state, removingContact: true };
 
     case CONTACT_REMOVED:
-      return { ...state, contacts: action.message };
+      return { ...state, contacts: action.message, removingContact: false };
 
     default:
       return state;
