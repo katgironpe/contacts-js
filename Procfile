@@ -1,2 +1,2 @@
-web: node --inspect-brk main.js
+web: npm run prod:start
 
