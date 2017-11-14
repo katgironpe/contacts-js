@@ -6,13 +6,12 @@ const store = configureStore();
 class CreateContact {
   static addContact(event) {
     event.preventDefault();
-    const getEl = document.getElementById;
 
-    const firstNameField = getEl('add-contact__first-name');
-    const lastNameField = getEl('add-contact__last-name');
-    const emailField = getEl('add-contact__email');
-    const phoneField = getEl('add-contact__phone');
-    const typeField = getEl('add-contact__type');
+    const firstNameField = document.getElementById('add-contact__first-name');
+    const lastNameField = document.getElementById('add-contact__last-name');
+    const emailField = document.getElementById('add-contact__email');
+    const phoneField = document.getElementById('add-contact__phone');
+    const typeField = document.getElementById('add-contact__type');
 
     if (firstNameField && lastNameField && emailField && phoneField && typeField ) {
       const firstName = firstNameField.value;
@@ -42,6 +41,17 @@ class CreateContact {
     }
   }
 
+  static showAddContactForm() {
+    document.getElementById('add-contact-tab-btn').click();
+  }
+
+  static handleCreateContactBtn() {
+    const btn = document.getElementById('add-contact-icon');
+
+    if (btn) {
+      btn.addEventListener('click', this.showAddContactForm);
+    }
+  }
 }
 
 export default CreateContact;

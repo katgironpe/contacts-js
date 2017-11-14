@@ -13134,6 +13134,7 @@ store.dispatch((0, _actions.getContacts)());
 
 // Listen for events
 _CreateContact2.default.handleSubmit();
+_CreateContact2.default.handleCreateContactBtn();
 
 /***/ }),
 /* 98 */
@@ -26697,13 +26698,12 @@ var CreateContact = function () {
     key: 'addContact',
     value: function addContact(event) {
       event.preventDefault();
-      var getEl = document.getElementById;
 
-      var firstNameField = getEl('add-contact__first-name');
-      var lastNameField = getEl('add-contact__last-name');
-      var emailField = getEl('add-contact__email');
-      var phoneField = getEl('add-contact__phone');
-      var typeField = getEl('add-contact__type');
+      var firstNameField = document.getElementById('add-contact__first-name');
+      var lastNameField = document.getElementById('add-contact__last-name');
+      var emailField = document.getElementById('add-contact__email');
+      var phoneField = document.getElementById('add-contact__phone');
+      var typeField = document.getElementById('add-contact__type');
 
       if (firstNameField && lastNameField && emailField && phoneField && typeField) {
         var firstName = firstNameField.value;
@@ -26731,6 +26731,20 @@ var CreateContact = function () {
 
       if (form) {
         form.addEventListener('submit', this.addContact);
+      }
+    }
+  }, {
+    key: 'showAddContactForm',
+    value: function showAddContactForm() {
+      document.getElementById('add-contact-tab-btn').click();
+    }
+  }, {
+    key: 'handleCreateContactBtn',
+    value: function handleCreateContactBtn() {
+      var btn = document.getElementById('add-contact-icon');
+
+      if (btn) {
+        btn.addEventListener('click', this.showAddContactForm);
       }
     }
   }]);
