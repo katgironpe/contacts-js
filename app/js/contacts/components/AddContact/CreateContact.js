@@ -12,6 +12,7 @@ class CreateContact {
     const emailField = document.getElementById('add-contact__email');
     const phoneField = document.getElementById('add-contact__phone');
     const typeField = document.getElementById('add-contact__type');
+    const form = document.getElementById('add-contact');
 
     if (firstNameField && lastNameField && emailField && phoneField && typeField ) {
       const firstName = firstNameField.value;
@@ -30,6 +31,8 @@ class CreateContact {
       }
 
       store.dispatch(createContact(contact));
+
+      this.reset();
     }
   }
 
@@ -43,6 +46,10 @@ class CreateContact {
 
   static showAddContactForm() {
     document.getElementById('add-contact-tab-btn').click();
+  }
+
+  static showContactList() {
+    document.getElementById('show-contacts-tab-btn').click();
   }
 
   static handleCreateContactBtn() {

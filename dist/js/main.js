@@ -26791,6 +26791,7 @@ var CreateContact = function () {
       var emailField = document.getElementById('add-contact__email');
       var phoneField = document.getElementById('add-contact__phone');
       var typeField = document.getElementById('add-contact__type');
+      var form = document.getElementById('add-contact');
 
       if (firstNameField && lastNameField && emailField && phoneField && typeField) {
         var firstName = firstNameField.value;
@@ -26809,6 +26810,8 @@ var CreateContact = function () {
         };
 
         store.dispatch((0, _actions.createContact)(contact));
+
+        this.reset();
       }
     }
   }, {
@@ -26824,6 +26827,11 @@ var CreateContact = function () {
     key: 'showAddContactForm',
     value: function showAddContactForm() {
       document.getElementById('add-contact-tab-btn').click();
+    }
+  }, {
+    key: 'showContactList',
+    value: function showContactList() {
+      document.getElementById('show-contacts-tab-btn').click();
     }
   }, {
     key: 'handleCreateContactBtn',
