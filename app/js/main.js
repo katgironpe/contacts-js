@@ -11,3 +11,4 @@ store.dispatch(getContacts());
 // Listen for events
 CreateContact.handleSubmit();
 CreateContact.handleCreateContactBtn();
+

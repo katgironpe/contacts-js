@@ -9,12 +9,19 @@ class DeleteContact {
   }
 
   static showDeleteContactBtn(event) {
+    console.log('Show a button later')
   }
 
-  static handleDblClickContact() {
+  static handleClickContact() {
+    const contactList = document.querySelectorAll('.mdl-list__item');
 
+    if (contactList) {
+      for (var i = 0; i < contactList.length; i++) {
+        contactList[i].addEventListener('click', this.showDeleteContactBtn);
+      }
+    }
   }
 
 }
 
-export default const DeleteContact;
+export default DeleteContact;

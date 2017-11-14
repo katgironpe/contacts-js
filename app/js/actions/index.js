@@ -14,10 +14,13 @@ import {
   CONTACT_ADDED,
   CONTACT_REMOVING,
   CONTACT_REMOVED,
-  CONTACTS_RESET
+  CONTACTS_RESET,
+  CONTACT_REMOVE_BTN_HIDE,
+  CONTACT_REMOVE_BTN_SHOW
 } from '../constants';
 
 import List from '../contacts/components/List/List';
+import DeleteContact from '../contacts/components/DeleteContact/DeleteContact';
 
 // Firebase config
 let config = {
@@ -47,6 +50,9 @@ export const getContacts = () => {
 
       // Display the contact list
       new List(snapshot.val()).displayContacts();
+
+      // Listen for click events
+      DeleteContact.handleClickContact();
     }, function (error) {
       console.log(`Error ${error.code}`);
     });

@@ -4863,6 +4863,8 @@ var CONTACT_ADDING = exports.CONTACT_ADDING = 'CONTACT_ADDING';
 var CONTACT_ADDED = exports.CONTACT_ADDED = 'CONTACT_ADDED';
 var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
 var CONTACT_REMOVED = exports.CONTACT_REMOVED = 'CONTACT_REMOVED';
+var CONTACT_REMOVE_BTN_SHOW = exports.CONTACT_REMOVE_BTN_SHOW = 'CONTACT_REMOVE_BTN_SHOW';
+var CONTACT_REMOVE_BTN_HIDE = exports.CONTACT_REMOVE_BTN_HIDE = 'CONTACT_REMOVE_BTN_HIDE';
 var CONTACTS_STATE = exports.CONTACTS_STATE = 'CONTACTS_STATE';
 var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
 var CONTACTS_RESET = exports.CONTACTS_RESET = 'CONTACTS_RESET';
@@ -6780,11 +6782,17 @@ var _List = __webpack_require__(213);
 
 var _List2 = _interopRequireDefault(_List);
 
+var _DeleteContact = __webpack_require__(216);
+
+var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 // Firebase config
+
+// These import load individual services into the firebase namespace.
 var config = {
   apiKey: "AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E",
   authDomain: "contacts-5f945.firebaseapp.com",
@@ -6793,8 +6801,6 @@ var config = {
   storageBucket: "",
   messagingSenderId: "994573974087"
 };
-// These import load individual services into the firebase namespace.
-
 
 firebase.initializeApp(config);
 
@@ -6814,6 +6820,9 @@ var getContacts = exports.getContacts = function getContacts() {
 
       // Display the contact list
       new _List2.default(snapshot.val()).displayContacts();
+
+      // Listen for click events
+      _DeleteContact2.default.handleClickContact();
     }, function (error) {
       console.log('Error ' + error.code);
     });
@@ -26776,6 +26785,61 @@ var CreateContact = function () {
 }();
 
 exports.default = CreateContact;
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _store = __webpack_require__(44);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _actions = __webpack_require__(52);
+
+var _dom = __webpack_require__(114);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var store = (0, _store2.default)();
+
+var DeleteContact = function () {
+  function DeleteContact() {
+    _classCallCheck(this, DeleteContact);
+  }
+
+  _createClass(DeleteContact, null, [{
+    key: 'handleDeleteContactBtn',
+    value: function handleDeleteContactBtn() {}
+  }, {
+    key: 'showDeleteContactBtn',
+    value: function showDeleteContactBtn(event) {
+      console.log('Show a button later');
+    }
+  }, {
+    key: 'handleClickContact',
+    value: function handleClickContact() {
+      var contactList = document.querySelectorAll('.mdl-list__item');
+
+      if (contactList) {
+        for (var i = 0; i < contactList.length; i++) {
+          contactList[i].addEventListener('click', this.showDeleteContactBtn);
+        }
+      }
+    }
+  }]);
+
+  return DeleteContact;
+}();
+
+exports.default = DeleteContact;
 
 /***/ })
 /******/ ]);
