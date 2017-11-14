@@ -12,6 +12,7 @@ import {
   CONTACTS_RECEIVED,
   CONTACT_ADDING,
   CONTACT_ADDED,
+  CONTACT_REMOVING,
   CONTACT_REMOVED,
   CONTACTS_RESET
 } from '../constants';
@@ -64,6 +65,22 @@ export const createContact = (contact) => {
 
     dispatch({
       type: CONTACT_ADDED
+    });
+  }
+};
+
+export const removeContact = (contactId) => {
+  return dispatch => {
+    const ref = firebase.database().ref(`/contacts/${contactId}`);
+
+    dispatch({
+      type: CONTACT_REMOVING
+    });
+
+    ref.remove();
+
+    dispatch({
+      type: CONTACT_REMOVED
     });
   }
 };

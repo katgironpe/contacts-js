@@ -23,3 +23,7 @@ body {
 .card-wide .mdl-card__menu {
   color: #fff;
 }
+
+.mdl-list__item:hover {
+  background: #eee;
+}

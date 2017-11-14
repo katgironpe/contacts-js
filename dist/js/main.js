@@ -4861,6 +4861,7 @@ var CONTACTS_UNFAVED = exports.CONTACTS_UNFAVED = 'CONTACTS_UNFAVED';
 var CONTACTS_RECEIVED = exports.CONTACTS_RECEIVED = 'CONTACTS_RECEIVED';
 var CONTACT_ADDING = exports.CONTACT_ADDING = 'CONTACT_ADDING';
 var CONTACT_ADDED = exports.CONTACT_ADDED = 'CONTACT_ADDED';
+var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
 var CONTACT_REMOVED = exports.CONTACT_REMOVED = 'CONTACT_REMOVED';
 var CONTACTS_STATE = exports.CONTACTS_STATE = 'CONTACTS_STATE';
 var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
@@ -6763,7 +6764,7 @@ function compose() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createContact = exports.getContacts = undefined;
+exports.removeContact = exports.createContact = exports.getContacts = undefined;
 
 var _reduxActions = __webpack_require__(116);
 
@@ -6831,6 +6832,22 @@ var createContact = exports.createContact = function createContact(contact) {
 
     dispatch({
       type: _constants.CONTACT_ADDED
+    });
+  };
+};
+
+var removeContact = exports.removeContact = function removeContact(contactId) {
+  return function (dispatch) {
+    var ref = firebase.database().ref('/contacts/' + contactId);
+
+    dispatch({
+      type: _constants.CONTACT_REMOVING
+    });
+
+    ref.remove();
+
+    dispatch({
+      type: _constants.CONTACT_REMOVED
     });
   };
 };
