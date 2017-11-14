@@ -22,15 +22,23 @@ You need to make sure have Node.js installed on your computer. These commands sh
 
 ### NoBackend App with Firebase
 
-* <a href="https://firebase.google.com/docs/web/setup" target="_blank">Add Firebase to your JavaScript Project</a>
+* [Firebase to your JavaScript Project](https://firebase.google.com/docs/web/setup)
 
 ### Clone the application
 
 ```bash
-git@github.com:katgironpe/contacts-js.git
+git clone git@github.com:katgironpe/contacts-js.git
 ```
 
 ### Install ESLint
+
+* Make sure your current path is the application path
+
+```
+cd contacts-js
+```
+
+* Install ESLint globally
 
 ```
 npm i eslint -g
@@ -49,4 +57,26 @@ npm i
 
 ```bash
 webpack
+```
+
+#### Install Webpack globally
+
+* There may be a rare case wherein you have installed the dependencies but the command does not work. In this case, it is best to install `webpack` globally.
+
+```bash
+npm i webpack -g
+```
+
+#### Start the app
+
+* This would watch for JS changes so you don't need to restart the app
+
+```bash
+npm start
+```
+
+### Access the app via web browser
+
+```bash
+open http://localhost:5000
 ```

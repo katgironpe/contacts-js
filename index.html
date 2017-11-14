@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="assets/images/icon.png">
 
     <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
@@ -18,32 +19,174 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+      mdl-layout--fixed-tabs">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <span class="mdl-layout-title">Address Book</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Sign in</a>
-          </nav>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Contacts</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Search</a>
+          <a href="#fixed-tab-3" class="mdl-layout__tab">Add Contact</a>
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Contacts</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Sign in</a>
-        </nav>
+        <span class="mdl-layout-title">Address Book</span>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content">
-          <!-- Your content goes here -->
-        </div>
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content">
+            <section class="card-wide">
+              <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Your Contacts</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Everyone
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Relatives
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Friends
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Clients
+                  </button>
+                </div>
+                <div class="mdl-card__list">
+                  <ul id="contacts-list" class="demo-list-two contact-list mdl-list">
+                  </ul>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Add more contacts
+                  </a>
+                </div>
+                <div class="mdl-card__menu">
+                  <button id="add-contact-icon" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                    <a href="#"><i class="material-icons">add</i></a>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <script type="text/x-tmpl" id="contact-list-items">
+
+              {% for (var i=0; i<o.contacts.length; i++) { %}
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar">person</i>
+                  <span>{%=o.contacts[i].first_name%} {%=o.contacts[i].last_name%}</span>
+                  <span class="mdl-list__item-sub-title">{%=o.contacts[i].phone%} / {%=o.contacts[i].email%}</span>
+                  </span>
+                  <span class="mdl-list__item-secondary-content">
+                  <span class="mdl-list__item-secondary-info">{%=o.contacts[i].type%}</span>
+                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                  </span>
+                </li>
+               {% } %}
+            </script>
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+          <div class="page-content">
+            <section class="card-wide">
+              <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Add Contact</h2>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <form id="add-contact" action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" required type="text" id="add-contact__first-name">
+                      <label class="mdl-textfield__label" for="add-contact__first-name">First Name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" required type="text" id="add-contact__last-name">
+                      <label class="mdl-textfield__label" for="add-contact__last-name">Last Name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" required type="text" id="add-contact__phone">
+                      <label class="mdl-textfield__label" for="add-contact__phone">Phone</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" required type="email" id="add-contact__email">
+                      <label class="mdl-textfield__label" for="add-contact__email">Email</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" required type="text" id="add-contact__type">
+                      <label class="mdl-textfield__label" for="add-contact__type">Type</label>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border">
+                      <button id="add-contact__submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="mdl-card__menu">
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content">
+            <section class="card-wide">
+              <div class="mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Your Contacts</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Everyone
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Relatives
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Friends
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    Clients
+                  </button>
+                </div>
+                <div class="mdl-card__list">
+                  <ul class="demo-list-two mdl-list">
+                    <li class="mdl-list__item mdl-list__item--two-line">
+                      <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-avatar">person</i>
+                        <span>Bryan Cranston</span>
+                        <span class="mdl-list__item-sub-title">09434344000 / bryan@somewhere.com</span>
+                      </span>
+                      <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Relative</span>
+                        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Add more contacts
+                  </a>
+                </div>
+                <div class="mdl-card__menu">
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </section>
       </main>
     </div>
+    <script src="node_modules/blueimp-tmpl/js/tmpl.min.js"></script>
     <script src="dist/js/main.js"></script>
     <script src="node_modules/material-design-lite/material.min.js"></script>
   </body>

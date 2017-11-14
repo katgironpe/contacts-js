@@ -1,4 +1,4 @@
 {
   "presets": ["es2015", "es2017"],
-  "plugins": ["transform-remove-strict-mode"]
+  "plugins": ["transform-remove-strict-mode", "transform-object-rest-spread"]
 }

@@ -1,16 +1,12 @@
-import * as firebase from 'firebase/app';
-// These imports load individual services into the firebase namespace.
-import 'firebase/auth';
-import 'firebase/database';
+// The app state
+import configureStore from './store';
+import { getContacts } from './actions';
+import CreateContact from './contacts/components/AddContact/CreateContact';
 
-// Firebase config
-let config = {
-  apiKey: "AIzaSyB2N3_biz5P3wz7CFrPjyfvETC6_5nP5q8",
-  authDomain: "contacts-js-17026.firebaseapp.com",
-  databaseURL: "https://contacts-js-17026.firebaseio.com",
-  projectId: "contacts-js-17026",
-  storageBucket: "contacts-js-17026.appspot.com",
-  messagingSenderId: "41072061162"
-};
+const store = configureStore();
 
-firebase.initializeApp(config);
+// Get contacts
+store.dispatch(getContacts());
+
+// Listen for events
+CreateContact.handleSubmit();
