@@ -1,2 +1,2 @@
-web: node --debug=5858 main.js
+web: node --inspect-brk main.js
 
