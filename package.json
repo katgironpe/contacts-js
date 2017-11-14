@@ -6,7 +6,9 @@
   "scripts": {
     "format": "eslint app/js",
     "build": "webpack --watch",
-    "start": "concurrently --raw --kill-others \"npm run build\" \"node main.js\""
+    "start": "concurrently --raw --kill-others \"npm run build\" \"node main.js\"",
+    "run": "node main.js",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
