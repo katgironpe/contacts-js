@@ -4,7 +4,6 @@ let app = express();
 
 let htmlPath = path.join(__dirname, './');
 
-
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(htmlPath));
 

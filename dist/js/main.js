@@ -24053,12 +24053,13 @@ var CreateContact = function () {
     key: 'addContact',
     value: function addContact(event) {
       event.preventDefault();
+      var getEl = document.getElementById;
 
-      var firstNameField = document.getElementById('add-contact__first-name');
-      var lastNameField = document.getElementById('add-contact__last-name');
-      var emailField = document.getElementById('add-contact__email');
-      var phoneField = document.getElementById('add-contact__phone');
-      var typeField = document.getElementById('add-contact__type');
+      var firstNameField = getEl('add-contact__first-name');
+      var lastNameField = getEl('add-contact__last-name');
+      var emailField = getEl('add-contact__email');
+      var phoneField = getEl('add-contact__phone');
+      var typeField = getEl('add-contact__type');
 
       if (firstNameField && lastNameField && emailField && phoneField && typeField) {
         var firstName = firstNameField.value;
