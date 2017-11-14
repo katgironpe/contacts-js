@@ -27,3 +27,7 @@ body {
 .mdl-list__item:hover {
   background: #eee;
 }
+
+.mdl-list__item-secondary-info {
+  text-transform: capitalize;
+}
