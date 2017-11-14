@@ -19,6 +19,7 @@ You need to make sure have Node.js installed on your computer. These commands sh
 * [Blueimp](https://github.com/blueimp/JavaScript-Templates/blob/master/README.md)
 * [Redux](https://github.com/reactjs/redux)
 * [Immutability Helper](https://github.com/kolodny/immutability-helper)
+* [Lodash SortBy](https://www.npmjs.com/package/lodash.sortby)
 
 ### NoBackend App with Firebase
 
