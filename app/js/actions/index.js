@@ -13,11 +13,10 @@ import {
   CONTACT_ADDING,
   CONTACT_ADDED,
   CONTACT_REMOVING,
-  CONTACT_REMOVED,
-  CONTACTS_RESET
+  CONTACT_REMOVED
 } from '../constants';
 
-import List from '../contacts/components/List/List';
+import List from '../contacts/components/List';
 import DeleteContact from '../contacts/components/DeleteContact';
 
 // Firebase config
@@ -40,7 +39,7 @@ export const getContacts = () => {
       type: CONTACTS_FETCHING
     });
 
-    ref.on("value", function(snapshot) {
+    ref.on('value', function(snapshot) {
       dispatch({
         type: CONTACTS_RECEIVED,
         contacts: snapshot.val()

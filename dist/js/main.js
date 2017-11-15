@@ -4893,7 +4893,6 @@ var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
 var CONTACT_REMOVED = exports.CONTACT_REMOVED = 'CONTACT_REMOVED';
 var CONTACTS_STATE = exports.CONTACTS_STATE = 'CONTACTS_STATE';
 var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
-var CONTACTS_RESET = exports.CONTACTS_RESET = 'CONTACTS_RESET';
 
 /***/ }),
 /* 32 */
@@ -4914,7 +4913,7 @@ __webpack_require__(178);
 
 var _constants = __webpack_require__(31);
 
-var _List = __webpack_require__(213);
+var _List = __webpack_require__(219);
 
 var _List2 = _interopRequireDefault(_List);
 
@@ -4948,7 +4947,7 @@ var getContacts = exports.getContacts = function getContacts() {
       type: _constants.CONTACTS_FETCHING
     });
 
-    ref.on("value", function (snapshot) {
+    ref.on('value', function (snapshot) {
       dispatch({
         type: _constants.CONTACTS_RECEIVED,
         contacts: snapshot.val()
@@ -13717,9 +13716,6 @@ function Contact() {
 
     case _constants.CONTACTS_RECEIVED:
       return _extends({}, state, { fetchingContacts: false, contacts: action.contacts });
-
-    case _constants.CONTACTS_RESET:
-      return _extends({}, state, { errors: null, fetchingContacts: false });
 
     case _constants.CONTACT_ADDING:
       return _extends({}, state, { addingContact: true });
@@ -26889,6 +26885,22 @@ var CreateContact = function () {
 }();
 
 exports.default = CreateContact;
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _List = __webpack_require__(213);
+
+var _List2 = _interopRequireDefault(_List);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _List2.default;
 
 /***/ })
 /******/ ]);

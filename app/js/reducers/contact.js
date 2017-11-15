@@ -8,8 +8,7 @@ import {
   CONTACT_ADDING,
   CONTACT_ADDED,
   CONTACT_REMOVING,
-  CONTACT_REMOVED,
-  CONTACTS_RESET
+  CONTACT_REMOVED
 } from '../constants';
 
 const initialState = {
@@ -23,9 +22,6 @@ export default function Contact (state = initialState, action) {
 
     case CONTACTS_RECEIVED:
       return { ...state, fetchingContacts: false, contacts: action.contacts };
-
-    case CONTACTS_RESET:
-      return { ...state, errors: null, fetchingContacts: false };
 
     case CONTACT_ADDING:
       return { ...state, addingContact: true };
