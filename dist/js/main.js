@@ -4891,8 +4891,6 @@ var CONTACT_ADDING = exports.CONTACT_ADDING = 'CONTACT_ADDING';
 var CONTACT_ADDED = exports.CONTACT_ADDED = 'CONTACT_ADDED';
 var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
 var CONTACT_REMOVED = exports.CONTACT_REMOVED = 'CONTACT_REMOVED';
-var CONTACT_REMOVE_BTN_SHOW = exports.CONTACT_REMOVE_BTN_SHOW = 'CONTACT_REMOVE_BTN_SHOW';
-var CONTACT_REMOVE_BTN_HIDE = exports.CONTACT_REMOVE_BTN_HIDE = 'CONTACT_REMOVE_BTN_HIDE';
 var CONTACTS_STATE = exports.CONTACTS_STATE = 'CONTACTS_STATE';
 var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
 var CONTACTS_RESET = exports.CONTACTS_RESET = 'CONTACTS_RESET';
@@ -4920,7 +4918,7 @@ var _List = __webpack_require__(213);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _DeleteContact = __webpack_require__(217);
+var _DeleteContact = __webpack_require__(215);
 
 var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
 
@@ -4932,12 +4930,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // These import load individual services into the firebase namespace.
 var config = {
-  apiKey: "AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E",
-  authDomain: "contacts-5f945.firebaseapp.com",
-  databaseURL: "https://contacts-5f945.firebaseio.com",
-  projectId: "contacts-5f945",
-  storageBucket: "",
-  messagingSenderId: "994573974087"
+  apiKey: 'AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E',
+  authDomain: 'contacts-5f945.firebaseapp.com',
+  databaseURL: 'https://contacts-5f945.firebaseio.com',
+  projectId: 'contacts-5f945',
+  storageBucket: '',
+  messagingSenderId: '994573974087'
 };
 
 firebase.initializeApp(config);
@@ -13146,7 +13144,7 @@ var _store2 = _interopRequireDefault(_store);
 
 var _actions = __webpack_require__(32);
 
-var _AddContact = __webpack_require__(218);
+var _AddContact = __webpack_require__(217);
 
 var _AddContact2 = _interopRequireDefault(_AddContact);
 
@@ -26713,6 +26711,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _DeleteContact = __webpack_require__(216);
+
+var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _DeleteContact2.default;
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _store = __webpack_require__(29);
@@ -26759,7 +26773,23 @@ var DeleteContact = function () {
 exports.default = DeleteContact;
 
 /***/ }),
-/* 216 */
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _CreateContact = __webpack_require__(218);
+
+var _CreateContact2 = _interopRequireDefault(_CreateContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _CreateContact2.default;
+
+/***/ }),
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 Object.defineProperty(exports, "__esModule", {
@@ -26859,38 +26889,6 @@ var CreateContact = function () {
 }();
 
 exports.default = CreateContact;
-
-/***/ }),
-/* 217 */
-/***/ (function(module, exports, __webpack_require__) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DeleteContact = __webpack_require__(215);
-
-var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _DeleteContact2.default;
-
-/***/ }),
-/* 218 */
-/***/ (function(module, exports, __webpack_require__) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _CreateContact = __webpack_require__(216);
-
-var _CreateContact2 = _interopRequireDefault(_CreateContact);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _CreateContact2.default;
 
 /***/ })
 /******/ ]);

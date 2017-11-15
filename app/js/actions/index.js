@@ -14,9 +14,7 @@ import {
   CONTACT_ADDED,
   CONTACT_REMOVING,
   CONTACT_REMOVED,
-  CONTACTS_RESET,
-  CONTACT_REMOVE_BTN_HIDE,
-  CONTACT_REMOVE_BTN_SHOW
+  CONTACTS_RESET
 } from '../constants';
 
 import List from '../contacts/components/List/List';
@@ -24,12 +22,12 @@ import DeleteContact from '../contacts/components/DeleteContact';
 
 // Firebase config
 let config = {
-  apiKey: "AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E",
-  authDomain: "contacts-5f945.firebaseapp.com",
-  databaseURL: "https://contacts-5f945.firebaseio.com",
-  projectId: "contacts-5f945",
-  storageBucket: "",
-  messagingSenderId: "994573974087"
+  apiKey: 'AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E',
+  authDomain: 'contacts-5f945.firebaseapp.com',
+  databaseURL: 'https://contacts-5f945.firebaseio.com',
+  projectId: 'contacts-5f945',
+  storageBucket: '',
+  messagingSenderId: '994573974087'
 };
 
 firebase.initializeApp(config);
@@ -56,7 +54,7 @@ export const getContacts = () => {
     }, function (error) {
       console.log(`Error ${error.code}`);
     });
-  }
+  };
 };
 
 export const createContact = (contact) => {
@@ -72,7 +70,7 @@ export const createContact = (contact) => {
     dispatch({
       type: CONTACT_ADDED
     });
-  }
+  };
 };
 
 export const removeContact = (contactId) => {
@@ -88,5 +86,5 @@ export const removeContact = (contactId) => {
     dispatch({
       type: CONTACT_REMOVED
     });
-  }
+  };
 };
