@@ -27008,13 +27008,28 @@ var FaveContact = function () {
       store.dispatch((0, _actions.faveContact)(id));
     }
   }, {
+    key: 'unfaveContact',
+    value: function unfaveContact(event) {
+      event.preventDefault();
+      var id = this.getAttribute('data-id');
+
+      store.dispatch((0, _actions.unfaveContact)(id));
+    }
+  }, {
     key: 'handleClickContact',
     value: function handleClickContact() {
       var contactList = document.querySelectorAll('.fave-contact');
+      var favedList = document.querySelectorAll('.unfave-contact');
 
       if (contactList) {
         for (var i = 0; i < contactList.length; i++) {
           contactList[i].addEventListener('click', this.faveContact);
+        }
+      }
+
+      if (favedList) {
+        for (var _i = 0; _i < favedList.length; _i++) {
+          favedList[_i].addEventListener('click', this.unfaveContact);
         }
       }
     }
