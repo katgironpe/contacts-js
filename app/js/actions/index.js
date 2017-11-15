@@ -20,7 +20,7 @@ import {
 } from '../constants';
 
 import List from '../contacts/components/List/List';
-import DeleteContact from '../contacts/components/DeleteContact/DeleteContact';
+import DeleteContact from '../contacts/components/DeleteContact';
 
 // Firebase config
 let config = {

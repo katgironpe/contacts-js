@@ -32,7 +32,14 @@ class CreateContact {
 
       store.dispatch(createContact(contact));
 
-      this.reset();
+      const formInputs = document.querySelectorAll('input');
+
+      if (formInputs) {
+        for (var i = 0; i < formInputs.length; i++) {
+          formInputs[i].value = '';
+          formInputs[i].blur();
+        }
+      }
     }
   }
 

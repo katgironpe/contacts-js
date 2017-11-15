@@ -1,7 +1,7 @@
 // The app state
 import configureStore from './store';
 import { getContacts } from './actions';
-import CreateContact from './contacts/components/AddContact/CreateContact';
+import CreateContact from './contacts/components/AddContact';
 
 const store = configureStore();
 

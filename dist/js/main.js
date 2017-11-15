@@ -4920,7 +4920,7 @@ var _List = __webpack_require__(213);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _DeleteContact = __webpack_require__(215);
+var _DeleteContact = __webpack_require__(217);
 
 var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
 
@@ -13146,9 +13146,9 @@ var _store2 = _interopRequireDefault(_store);
 
 var _actions = __webpack_require__(32);
 
-var _CreateContact = __webpack_require__(216);
+var _AddContact = __webpack_require__(218);
 
-var _CreateContact2 = _interopRequireDefault(_CreateContact);
+var _AddContact2 = _interopRequireDefault(_AddContact);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13159,8 +13159,8 @@ var store = (0, _store2.default)();
 store.dispatch((0, _actions.getContacts)());
 
 // Listen for events
-_CreateContact2.default.handleSubmit();
-_CreateContact2.default.handleCreateContactBtn();
+_AddContact2.default.handleSubmit();
+_AddContact2.default.handleCreateContactBtn();
 
 /***/ }),
 /* 98 */
@@ -26815,7 +26815,14 @@ var CreateContact = function () {
 
         store.dispatch((0, _actions.createContact)(contact));
 
-        this.reset();
+        var formInputs = document.querySelectorAll('input');
+
+        if (formInputs) {
+          for (var i = 0; i < formInputs.length; i++) {
+            formInputs[i].value = '';
+            formInputs[i].blur();
+          }
+        }
       }
     }
   }, {
@@ -26852,6 +26859,38 @@ var CreateContact = function () {
 }();
 
 exports.default = CreateContact;
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _DeleteContact = __webpack_require__(215);
+
+var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _DeleteContact2.default;
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _CreateContact = __webpack_require__(216);
+
+var _CreateContact2 = _interopRequireDefault(_CreateContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _CreateContact2.default;
 
 /***/ })
 /******/ ]);
