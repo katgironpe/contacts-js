@@ -4882,11 +4882,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var CONTACTS_FETCHING = exports.CONTACTS_FETCHING = 'CONTACTS_FETCHING';
-var CONTACTS_FAVE = exports.CONTACTS_FAVE = 'CONTACTS_FAVE';
-var CONTACTS_FAVED = exports.CONTACTS_FAVED = 'CONTACTS_FAVED';
-var CONTACTS_UNFAVE = exports.CONTACTS_UNFAVE = 'CONTACTS_UNFAVE';
-var CONTACTS_UNFAVED = exports.CONTACTS_UNFAVED = 'CONTACTS_UNFAVED';
 var CONTACTS_RECEIVED = exports.CONTACTS_RECEIVED = 'CONTACTS_RECEIVED';
+var CONTACT_FAVE = exports.CONTACT_FAVE = 'CONTACTS_FAVE';
+var CONTACT_FAVED = exports.CONTACT_FAVED = 'CONTACTS_FAVED';
+var CONTACT_UNFAVE = exports.CONTACT_UNFAVE = 'CONTACTS_UNFAVE';
+var CONTACT_UNFAVED = exports.CONTACT_UNFAVED = 'CONTACTS_UNFAVED';
 var CONTACT_ADDING = exports.CONTACT_ADDING = 'CONTACT_ADDING';
 var CONTACT_ADDED = exports.CONTACT_ADDED = 'CONTACT_ADDED';
 var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
@@ -4901,7 +4901,7 @@ var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.removeContact = exports.createContact = exports.getContacts = undefined;
+exports.unfaveContact = exports.faveContact = exports.removeContact = exports.createContact = exports.getContacts = undefined;
 
 var _reduxActions = __webpack_require__(116);
 
@@ -4921,13 +4921,15 @@ var _DeleteContact = __webpack_require__(215);
 
 var _DeleteContact2 = _interopRequireDefault(_DeleteContact);
 
+var _FaveContact = __webpack_require__(220);
+
+var _FaveContact2 = _interopRequireDefault(_FaveContact);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 // Firebase config
-
-// These import load individual services into the firebase namespace.
 var config = {
   apiKey: 'AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E',
   authDomain: 'contacts-5f945.firebaseapp.com',
@@ -4936,6 +4938,8 @@ var config = {
   storageBucket: '',
   messagingSenderId: '994573974087'
 };
+// These import load individual services into the firebase namespace.
+
 
 firebase.initializeApp(config);
 
@@ -4958,6 +4962,7 @@ var getContacts = exports.getContacts = function getContacts() {
 
       // Listen for click events
       _DeleteContact2.default.handleClickContact();
+      _FaveContact2.default.handleClickContact();
     }, function (error) {
       console.log('Error ' + error.code);
     });
@@ -4992,6 +4997,38 @@ var removeContact = exports.removeContact = function removeContact(contactId) {
 
     dispatch({
       type: _constants.CONTACT_REMOVED
+    });
+  };
+};
+
+var faveContact = exports.faveContact = function faveContact(contactId) {
+  return function (dispatch) {
+    var ref = firebase.database().ref('/contacts/' + contactId);
+
+    dispatch({
+      type: _constants.CONTACT_FAVE
+    });
+
+    ref.update({ important: true });
+
+    dispatch({
+      type: _constants.CONTACT_FAVED
+    });
+  };
+};
+
+var unfaveContact = exports.unfaveContact = function unfaveContact(contactId) {
+  return function (dispatch) {
+    var ref = firebase.database().ref('/contacts/' + contactId);
+
+    dispatch({
+      type: _constants.CONTACT_UNFAVE
+    });
+
+    ref.update({ important: false });
+
+    dispatch({
+      type: _constants.CONTACT_UNFAVED
     });
   };
 };
@@ -13720,9 +13757,26 @@ function Contact() {
     case _constants.CONTACT_ADDING:
       return _extends({}, state, { addingContact: true });
 
+    case _constants.CONTACT_FAVE:
+      return _extends({}, state, { favingContact: true });
+
+    case _constants.CONTACT_FAVED:
+      return _extends({}, state, { contacts: action.message, favingContact: false });
+
+    case _constants.CONTACT_UNFAVE:
+      return _extends({}, state, { unfavingContact: true });
+
+    case _constants.CONTACT_UNFAVED:
+      return _extends({}, state, { contacts: action.message, unfavingContact: false });
+
     case _constants.CONTACT_ADDED:
       return _extends({}, state, { contacts: action.message, addingContact: false });
 
+    case _constants.CONTACT_ADDING:
+      return _extends({}, state, { addingContact: true });
+
+    case _constants.CONTACT_ADDED:
+      return _extends({}, state, { contacts: action.message, addingContact: false });
     case _constants.CONTACT_REMOVING:
       return _extends({}, state, { removingContact: true });
 
@@ -26901,6 +26955,75 @@ var _List2 = _interopRequireDefault(_List);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _List2.default;
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _FaveContact = __webpack_require__(221);
+
+var _FaveContact2 = _interopRequireDefault(_FaveContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _FaveContact2.default;
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _store = __webpack_require__(29);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _actions = __webpack_require__(32);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var store = (0, _store2.default)();
+
+var FaveContact = function () {
+  function FaveContact() {
+    _classCallCheck(this, FaveContact);
+  }
+
+  _createClass(FaveContact, null, [{
+    key: 'faveContact',
+    value: function faveContact(event) {
+      event.preventDefault();
+      var id = this.getAttribute('data-id');
+
+      store.dispatch((0, _actions.faveContact)(id));
+    }
+  }, {
+    key: 'handleClickContact',
+    value: function handleClickContact() {
+      var contactList = document.querySelectorAll('.fave-contact');
+
+      if (contactList) {
+        for (var i = 0; i < contactList.length; i++) {
+          contactList[i].addEventListener('click', this.faveContact);
+        }
+      }
+    }
+  }]);
+
+  return FaveContact;
+}();
+
+exports.default = FaveContact;
 
 /***/ })
 /******/ ]);

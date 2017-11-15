@@ -5,19 +5,21 @@ import 'firebase/database';
 
 import {
   CONTACTS_FETCHING,
-  CONTACTS_FAVE,
-  CONTACTS_FAVED,
-  CONTACTS_UNFAVE,
-  CONTACTS_UNFAVED,
   CONTACTS_RECEIVED,
   CONTACT_ADDING,
   CONTACT_ADDED,
   CONTACT_REMOVING,
-  CONTACT_REMOVED
+  CONTACT_REMOVED,
+  CONTACT_FAVE,
+  CONTACT_FAVED,
+  CONTACT_UNFAVE,
+  CONTACT_UNFAVED,
 } from '../constants';
 
 import List from '../contacts/components/List';
 import DeleteContact from '../contacts/components/DeleteContact';
+import FaveContact from '../contacts/components/FaveContact';
+
 
 // Firebase config
 let config = {
@@ -50,6 +52,7 @@ export const getContacts = () => {
 
       // Listen for click events
       DeleteContact.handleClickContact();
+      FaveContact.handleClickContact();
     }, function (error) {
       console.log(`Error ${error.code}`);
     });
@@ -84,6 +87,39 @@ export const removeContact = (contactId) => {
 
     dispatch({
       type: CONTACT_REMOVED
+    });
+  };
+};
+
+export const faveContact = (contactId) => {
+  return dispatch => {
+    const ref = firebase.database().ref(`/contacts/${contactId}`);
+
+    dispatch({
+      type: CONTACT_FAVE
+    });
+
+    ref.update({ important: true });
+
+    dispatch({
+      type: CONTACT_FAVED
+    });
+  };
+};
+
+
+export const unfaveContact = (contactId) => {
+  return dispatch => {
+    const ref = firebase.database().ref(`/contacts/${contactId}`);
+
+    dispatch({
+      type: CONTACT_UNFAVE
+    });
+
+    ref.update({ important: false });
+
+    dispatch({
+      type: CONTACT_UNFAVED
     });
   };
 };

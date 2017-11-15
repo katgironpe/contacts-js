@@ -86,7 +86,7 @@
                   <span class="mdl-list__item-secondary-content">
                     <span class="mdl-list__item-secondary-info">{%=o.contacts[i].type%}</span>
                     <div class="icon icon-ic_play-circle_outline_black_24dp"></div>
-                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                    <a data-id="{%=o.contacts[i].id%}" class="mdl-list__item-secondary-action fave-contact mdl-button mdl-js-button mdl-button--icon {%=o.contacts[i].important ? 'mdl-button--colored' : '' %}" href="#"><i class="material-icons">star</i></a>
                   </span>
                   <span class="mdl-list__item-secondary-content">
                     <button data-id="{%=o.contacts[i].id%}" class="delete-contact mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
