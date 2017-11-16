@@ -68,6 +68,24 @@ webpack
 npm i webpack -g
 ```
 
+### Configuration
+
+1. Sign up for [Firebase](https://firebase.google.com/) and create a new project
+2. Click on "Database" and click "get started"
+3. Click on rules
+4. Update the rules to look like this:
+   ```
+    {
+      "rules": {
+        ".read": true,
+        ".write": true
+      }
+    }
+   ```
+5. Save the new rules by clicking "Publish"
+6. Click "Project Overview" and "Add Firebase to your web app"
+7. Copy the configuration details over to a new file called `config/default.json` which should be based on `config/production.json`
+
 #### Start the app
 
 * This would watch for JS changes so you don't need to restart the app
