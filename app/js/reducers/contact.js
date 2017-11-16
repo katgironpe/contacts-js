@@ -23,17 +23,15 @@ export default function Contact (state = initialState, action) {
       return { ...state, fetchingContacts: true };
 
     case CONTACTS_RECEIVED:
-      const entries = Object.entries(action.contacts).map(o => o[1]);
-      const contacts = entries.map((o, i) => { return Object.assign(o, { 'id': Object.keys(action.contacts)[i] }) });
+      const contacts = action.contacts || {};
       return { ...state, fetchingContacts: false, contacts: contacts };
 
     case CONTACTS_SEARCHING:
       return { ...state, searchingContacts: true };
 
     case CONTACTS_SEARCHED:
-      const contactEntries = Object.entries(action.contacts).map(o => o[1]);
-      const data = contactEntries.map((o, i) => { return Object.assign(o, { 'id': Object.keys(action.contacts)[i] }) });
-      return { ...state, searchingContacts: false, contacts: data };
+      const allContacts = action.contacts || {};
+      return { ...state, searchingContacts: false, contacts: allContacts };
 
     case CONTACT_ADDING:
       return { ...state, addingContact: true };
