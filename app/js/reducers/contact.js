@@ -1,3 +1,4 @@
+import pick from 'lodash.pick';
 import {
   CONTACTS_FETCHING,
   CONTACTS_RECEIVED,
@@ -31,7 +32,15 @@ export default function Contact (state = initialState, action) {
 
     case CONTACTS_SEARCHED:
       const allContacts = action.contacts || {};
-      return { ...state, searchingContacts: false, contacts: allContacts };
+      const filteredContacts = Object.keys(allContacts).filter((c) => {
+        contact = allContacts[c];
+        const filtered = contact.last_name.includes(action.query) || contact.first_name.includes(action.query) || contact.email.includes(action.email);
+        return filtered;
+      });
+
+      const contactsFiltered = pick(allContacts, filteredContacts);
+
+      return { ...state, searchingContacts: false, contacts: contactsFiltered };
 
     case CONTACT_ADDING:
       return { ...state, addingContact: true };

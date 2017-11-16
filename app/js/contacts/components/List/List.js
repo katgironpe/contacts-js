@@ -1,4 +1,6 @@
 import sortBy from 'lodash.sortby';
+import DeleteContact from '../DeleteContact';
+import FaveContact from '../FaveContact';
 
 class List {
   constructor(contacts) {
@@ -13,6 +15,9 @@ class List {
     const data = { contacts: sortedContactsList };
     const result = tmpl('contact-list-items', data);
     document.getElementById('contacts-list').innerHTML = result;
+    // Listen for click events
+    DeleteContact.handleClickContact();
+    FaveContact.handleClickContact();
   }
 }
 

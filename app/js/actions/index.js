@@ -1,4 +1,3 @@
-import { createAction } from 'redux-actions';
 import * as firebase from 'firebase/app';
 import config from 'clientconfig';
 // These import load individual services into the firebase namespace.
@@ -20,9 +19,7 @@ import {
 } from '../constants';
 
 import List from '../contacts/components/List';
-import DeleteContact from '../contacts/components/DeleteContact';
-import FaveContact from '../contacts/components/FaveContact';
-
+import SearchContact from '../contacts/components/SearchContact';
 
 // Firebase config
 let clientconfig = {
@@ -53,9 +50,7 @@ export const getContacts = () => {
       // Display the contact list
       new List(snapshot.val()).displayContacts();
 
-      // Listen for click events
-      DeleteContact.handleClickContact();
-      FaveContact.handleClickContact();
+      new SearchContact(snapshot.val()).handleSearchContact();
     }, function (error) {
       console.log(`Error ${error.code}`);
     });
@@ -129,25 +124,14 @@ export const unfaveContact = (contactId) => {
 
 export const searchContacts = (query) => {
   return dispatch => {
-    const ref = firebase.database().ref('/contacts');
-
     dispatch({
       type: CONTACTS_SEARCHING
     });
 
-    ref.orderByChild('last_name').startAt(query.toLowerCase()).once('value', function(snapshot) {
-      dispatch({
-        type: CONTACTS_SEARCHED,
-        contacts: snapshot.val()
-      });
-
-      // Display the contact list
-      new List(snapshot.val()).displayContacts();
-
-      // Listen for click events
-      DeleteContact.handleClickContact();
-      FaveContact.handleClickContact();
-    }, function (error) {
+    dispatch({
+      type: CONTACTS_SEARCHED,
+      query: query.toLowerCase(),
+      contacts: JSON.parse(window.localStorage.CONTACTS_STATE).contact.contacts
     });
   };
 };

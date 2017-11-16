@@ -1,19 +1,19 @@
-import { CONTACTS_STATE } from '../constants'
+import { CONTACTS_STATE } from '../constants';
 
 export function loadState () {
   try {
-    const serialized = localStorage.getItem(CONTACTS_STATE)
+    const serialized = localStorage.getItem(CONTACTS_STATE);
     if (serialized === null) {
       return undefined;
     }
     return JSON.parse(serialized);
   }
   catch (error) {
-    return undefined
+    return undefined;
   }
 }
 
-export function saveState (state) {
+export function saveState(state) {
   try {
     const serialized = JSON.stringify(state);
     localStorage.setItem(CONTACTS_STATE, serialized);

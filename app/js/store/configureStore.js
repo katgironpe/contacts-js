@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware                  from 'redux-thunk';
 import { createLogger }                 from 'redux-logger';
 import reducers                         from '../reducers';
-import { loadState }                    from '../utils';
 
 const { devToolsExtension } = window;
 const loggerMiddleware = createLogger({
@@ -10,11 +9,9 @@ const loggerMiddleware = createLogger({
   collapsed: true,
 });
 
-export default function configureStore (persistedState = loadState()) {
+export default function configureStore() {
 return createStore(
-  reducers,
-  applyMiddleware(thunkMiddleware, loggerMiddleware),
-  persistedState,
-  devToolsExtension && devToolsExtension()
+    reducers,
+    applyMiddleware(thunkMiddleware, loggerMiddleware)
   )
 }
