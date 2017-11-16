@@ -6,7 +6,8 @@ class List {
   }
 
   displayContacts() {
-    const entries = Object.entries(this.contacts).map(o => o[1]);
+    const fbResult = this.contacts || {};
+    const entries = Object.entries(fbResult).map(o => o[1]);
     const contacts = entries.map((o, i) => { return Object.assign(o, { 'id': Object.keys(this.contacts)[i] }) });
     const sortedContactsList = sortBy(contacts, ['last_name', 'first_name']);
     const data = { contacts: sortedContactsList };

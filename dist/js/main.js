@@ -24122,7 +24122,8 @@ var List = function () {
     value: function displayContacts() {
       var _this = this;
 
-      var entries = Object.entries(this.contacts).map(function (o) {
+      var fbResult = this.contacts || {};
+      var entries = Object.entries(fbResult).map(function (o) {
         return o[1];
       });
       var contacts = entries.map(function (o, i) {
