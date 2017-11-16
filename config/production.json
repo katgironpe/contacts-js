@@ -1,0 +1,10 @@
+{
+  "firebase": {
+    "apiKey": "AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E",
+    "authDomain": "contacts-5f945.firebaseapp.com",
+    "databaseURL": "https://contacts-5f945.firebaseio.com",
+    "projectId": "contacts-5f945",
+    "storageBucket": "",
+    "messagingSenderId": "994573974087"
+  }
+}

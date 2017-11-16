@@ -34,7 +34,9 @@
   },
   "dependencies": {
     "blueimp-tmpl": "^3.11.0",
+    "clientconfig": "^1.1.1",
     "concurrently": "^3.5.0",
+    "config": "^1.28.1",
     "express": "^4.16.2",
     "firebase": "^4.6.2",
     "immutability-helper": "^2.5.0",

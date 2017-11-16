@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import * as firebase from 'firebase/app';
+import config from 'clientconfig';
 // These import load individual services into the firebase namespace.
 import 'firebase/database';
 
@@ -24,16 +25,16 @@ import FaveContact from '../contacts/components/FaveContact';
 
 
 // Firebase config
-let config = {
-  apiKey: 'AIzaSyDO3m-Rb5VJ_tHqVtv0GEW-yRLNcEeQe2E',
-  authDomain: 'contacts-5f945.firebaseapp.com',
-  databaseURL: 'https://contacts-5f945.firebaseio.com',
-  projectId: 'contacts-5f945',
-  storageBucket: '',
-  messagingSenderId: '994573974087'
+let clientconfig = {
+  apiKey: config.apiKey,
+  authDomain: config.authDomain,
+  databaseURL: config.databaseURL,
+  projectId: config.projectId,
+  storageBucket: config.storageBucket,
+  messagingSenderId: config.messagingSenderId
 };
 
-firebase.initializeApp(config);
+firebase.initializeApp(clientconfig);
 
 export const getContacts = () => {
   return dispatch => {
