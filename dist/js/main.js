@@ -5030,8 +5030,8 @@ var CONTACT_ADDING = exports.CONTACT_ADDING = 'CONTACT_ADDING';
 var CONTACT_ADDED = exports.CONTACT_ADDED = 'CONTACT_ADDED';
 var CONTACT_REMOVING = exports.CONTACT_REMOVING = 'CONTACT_REMOVING';
 var CONTACT_REMOVED = exports.CONTACT_REMOVED = 'CONTACT_REMOVED';
-var CONTACTS_STATE = exports.CONTACTS_STATE = 'CONTACTS_STATE';
-var CONTACTS_CACHE = exports.CONTACTS_CACHE = 'CONTACTS_CACHE';
+var CONTACTS_SEARCHING = exports.CONTACTS_SEARCHING = 'CONTACTS_SEARCHING';
+var CONTACTS_SEARCHED = exports.CONTACTS_SEARCHED = 'CONTACTS_SEARCHED';
 
 /***/ }),
 /* 33 */
@@ -13752,7 +13752,25 @@ function Contact() {
       return _extends({}, state, { fetchingContacts: true });
 
     case _constants.CONTACTS_RECEIVED:
-      return _extends({}, state, { fetchingContacts: false, contacts: action.contacts });
+      var entries = Object.entries(action.contacts).map(function (o) {
+        return o[1];
+      });
+      var contacts = entries.map(function (o, i) {
+        return Object.assign(o, { 'id': Object.keys(action.contacts)[i] });
+      });
+      return _extends({}, state, { fetchingContacts: false, contacts: contacts });
+
+    case _constants.CONTACTS_SEARCHING:
+      return _extends({}, state, { searchingContacts: true });
+
+    case _constants.CONTACTS_SEARCHED:
+      var contactEntries = Object.entries(action.contacts).map(function (o) {
+        return o[1];
+      });
+      var data = contactEntries.map(function (o, i) {
+        return Object.assign(o, { 'id': Object.keys(action.contacts)[i] });
+      });
+      return _extends({}, state, { searchingContacts: false, contacts: data });
 
     case _constants.CONTACT_ADDING:
       return _extends({}, state, { addingContact: true });
@@ -24112,15 +24130,7 @@ var List = function () {
   _createClass(List, [{
     key: 'displayContacts',
     value: function displayContacts() {
-      var _this = this;
-
-      var entries = Object.entries(this.contacts).map(function (o) {
-        return o[1];
-      });
-      var contacts = entries.map(function (o, i) {
-        return Object.assign(o, { 'id': Object.keys(_this.contacts)[i] });
-      });
-      var sortedContactsList = (0, _lodash2.default)(contacts, ['last_name', 'first_name']);
+      var sortedContactsList = (0, _lodash2.default)(this.contacts, ['last_name', 'first_name']);
       var data = { contacts: sortedContactsList };
       var result = tmpl('contact-list-items', data);
       document.getElementById('contacts-list').innerHTML = result;

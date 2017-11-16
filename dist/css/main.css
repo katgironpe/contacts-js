@@ -54,3 +54,7 @@ body {
 .card-wide .mdl-card__title {
   padding: 0 16px;
 }
+
+.mdl-card__title .mdl-card__title-text {
+  padding: 15px 0 10px 0;;
+}

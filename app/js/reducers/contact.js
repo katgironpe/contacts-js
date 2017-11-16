@@ -1,6 +1,8 @@
 import {
   CONTACTS_FETCHING,
   CONTACTS_RECEIVED,
+  CONTACTS_SEARCHING,
+  CONTACTS_SEARCHED,
   CONTACT_ADDING,
   CONTACT_FAVE,
   CONTACT_FAVED,
@@ -13,7 +15,7 @@ import {
 
 const initialState = {
   contacts: []
-}
+};
 
 export default function Contact (state = initialState, action) {
   switch (action.type) {
@@ -21,7 +23,17 @@ export default function Contact (state = initialState, action) {
       return { ...state, fetchingContacts: true };
 
     case CONTACTS_RECEIVED:
-      return { ...state, fetchingContacts: false, contacts: action.contacts };
+      const entries = Object.entries(action.contacts).map(o => o[1]);
+      const contacts = entries.map((o, i) => { return Object.assign(o, { 'id': Object.keys(action.contacts)[i] }) });
+      return { ...state, fetchingContacts: false, contacts: contacts };
+
+    case CONTACTS_SEARCHING:
+      return { ...state, searchingContacts: true };
+
+    case CONTACTS_SEARCHED:
+      const contactEntries = Object.entries(action.contacts).map(o => o[1]);
+      const data = contactEntries.map((o, i) => { return Object.assign(o, { 'id': Object.keys(action.contacts)[i] }) });
+      return { ...state, searchingContacts: false, contacts: data };
 
     case CONTACT_ADDING:
       return { ...state, addingContact: true };
