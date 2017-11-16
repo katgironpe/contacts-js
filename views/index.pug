@@ -1,0 +1,25 @@
+doctype html
+html.no-js(lang="")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible", content="ie=edge")
+    title Address Book
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="manifest", href="site.webmanifest")
+    link(rel="apple-touch-icon", href="assets/images/icon.png")
+    link(rel="stylesheet", href="node_modules/material-design-lite/material.min.css")
+    link(rel="stylesheet", href="dist/css/main.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  body
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-tabs
+      include header.pug
+      main.mdl-layout__content
+        section#fixed-tab-1.mdl-layout__tab-panel.is-active
+          include contacts.pug
+        section#fixed-tab-3.mdl-layout__tab-panel
+          include contact_form.pug
+
+    script(src="node_modules/blueimp-tmpl/js/tmpl.min.js")
+    script(src="dist/js/main.js")
+    script(src="node_modules/material-design-lite/material.min.js")

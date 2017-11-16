@@ -1,0 +1,25 @@
+.page-content
+  section.card-wide
+    .mdl-card.mdl-shadow--2dp
+      .mdl-card__title
+        h2.mdl-card__title-text Add Contact
+      .mdl-card__actions.mdl-card--border
+        form#add-contact(action="#")
+          .mdl-textfield.mdl-js-textfield
+            input#add-contact__first-name.mdl-textfield__input(required="", type="text", placeholder="First Name")
+            label.mdl-textfield__label(for="add-contact__first-name") First Name
+          .mdl-textfield.mdl-js-textfield
+            input#add-contact__last-name.mdl-textfield__input(required="", type="text", placeholder="Last Name")
+            label.mdl-textfield__label(for="add-contact__last-name") Last Name
+          .mdl-textfield.mdl-js-textfield
+            input#add-contact__phone.mdl-textfield__input(required="", type="text", placeholder="Phone")
+            label.mdl-textfield__label(for="add-contact__phone") Phone
+          .mdl-textfield.mdl-js-textfield
+            input#add-contact__email.mdl-textfield__input(required="", type="email", placeholder="Email")
+            label.mdl-textfield__label(for="add-contact__email") Email
+          .mdl-textfield.mdl-js-textfield
+            input#add-contact__type.mdl-textfield__input(required="", type="text", placeholder="Type")
+            label.mdl-textfield__label(for="add-contact__type") Type
+          .mdl-card__actions.mdl-card--border
+            button#add-contact__submit-btn.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent
+              | Submit
