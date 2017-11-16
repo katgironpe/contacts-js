@@ -2,7 +2,10 @@
   section.card-wide
     .mdl-card.mdl-shadow--2dp
       .mdl-card__title
-        h2.mdl-card__title-text Your Contacts
+        form#search-contacts(action="#")
+          .mdl-textfield.mdl-js-textfield
+            input#search.mdl-textfield__input.white.gray-boder(type="Search Contacts")
+            label.mdl-textfield__label.white(for="search") Search Contacts...
       .mdl-card__supporting-text
         button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--accent
           | Everyone

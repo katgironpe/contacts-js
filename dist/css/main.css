@@ -42,3 +42,15 @@ body {
 .mdl-list {
   margin: 0;
 }
+
+.white {
+  color: #fff;
+}
+
+.gray-boder {
+  border-bottom: 1px solid #eee;
+}
+
+.card-wide .mdl-card__title {
+  padding: 0 16px;
+}
