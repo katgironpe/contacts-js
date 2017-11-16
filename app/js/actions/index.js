@@ -137,7 +137,7 @@ export const searchContacts = (query) => {
       type: CONTACTS_SEARCHING
     });
 
-    ref.orderByChild('last_name').startAt(query).endAt(query).on('value', function(snapshot) {
+    ref.orderByChild('last_name').startAt(query).on('value', function(snapshot) {
       dispatch({
         type: CONTACTS_SEARCHED,
         contacts: snapshot.val()

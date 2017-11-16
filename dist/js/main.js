@@ -3263,7 +3263,7 @@ var searchContacts = exports.searchContacts = function searchContacts(query) {
       type: _constants.CONTACTS_SEARCHING
     });
 
-    ref.orderByChild('last_name').startAt(query).endAt(query).on('value', function (snapshot) {
+    ref.orderByChild('last_name').startAt(query).on('value', function (snapshot) {
       dispatch({
         type: _constants.CONTACTS_SEARCHED,
         contacts: snapshot.val()
