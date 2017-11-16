@@ -125,3 +125,11 @@ export const unfaveContact = (contactId) => {
     });
   };
 };
+
+export const searchContacts = () => {
+  return dispatch => {
+    dispatch({
+      type: CONTACTS_SEARCHING
+    });
+  };
+};

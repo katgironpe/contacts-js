@@ -3117,7 +3117,7 @@ exports.default = _configureStore2.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.unfaveContact = exports.faveContact = exports.removeContact = exports.createContact = exports.getContacts = undefined;
+exports.searchContacts = exports.unfaveContact = exports.faveContact = exports.removeContact = exports.createContact = exports.getContacts = undefined;
 
 var _reduxActions = __webpack_require__(116);
 
@@ -3245,6 +3245,14 @@ var unfaveContact = exports.unfaveContact = function unfaveContact(contactId) {
 
     dispatch({
       type: _constants.CONTACT_UNFAVED
+    });
+  };
+};
+
+var searchContacts = exports.searchContacts = function searchContacts() {
+  return function (dispatch) {
+    dispatch({
+      type: _constants.CONTACTS_SEARCHING
     });
   };
 };
