@@ -32,4 +32,13 @@ body {
   text-transform: capitalize;
 }
 
+.mdl-card__supporting-text {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 5px 16px;
+  width: 100%;
+}
 
+.mdl-list {
+  margin: 0;
+}
