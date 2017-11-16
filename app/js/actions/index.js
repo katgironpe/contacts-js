@@ -131,8 +131,6 @@ export const searchContacts = (query) => {
   return dispatch => {
     const ref = firebase.database().ref('/contacts');
 
-    console.log('SEARCHING FOR', query);
-
     dispatch({
       type: CONTACTS_SEARCHING
     });
@@ -150,7 +148,6 @@ export const searchContacts = (query) => {
       DeleteContact.handleClickContact();
       FaveContact.handleClickContact();
     }, function (error) {
-      console.log(`Error ${error.code}`);
     });
   };
 };
