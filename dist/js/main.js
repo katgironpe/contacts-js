@@ -3253,10 +3253,30 @@ var unfaveContact = exports.unfaveContact = function unfaveContact(contactId) {
   };
 };
 
-var searchContacts = exports.searchContacts = function searchContacts() {
+var searchContacts = exports.searchContacts = function searchContacts(query) {
   return function (dispatch) {
+    var ref = firebase.database().ref('/contacts');
+
+    console.log('SEARCHING FOR', query);
+
     dispatch({
       type: _constants.CONTACTS_SEARCHING
+    });
+
+    ref.orderByChild('last_name').startAt(query).endAt(query).on('value', function (snapshot) {
+      dispatch({
+        type: _constants.CONTACTS_SEARCHED,
+        contacts: snapshot.val()
+      });
+
+      // Display the contact list
+      new _List2.default(snapshot.val()).displayContacts();
+
+      // Listen for click events
+      _DeleteContact2.default.handleClickContact();
+      _FaveContact2.default.handleClickContact();
+    }, function (error) {
+      console.log('Error ' + error.code);
     });
   };
 };
@@ -13196,17 +13216,22 @@ var _AddContact = __webpack_require__(222);
 
 var _AddContact2 = _interopRequireDefault(_AddContact);
 
+var _SearchContact = __webpack_require__(224);
+
+var _SearchContact2 = _interopRequireDefault(_SearchContact);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// The app state
 var store = (0, _store2.default)();
 
 // Get contacts
-// The app state
 store.dispatch((0, _actions.getContacts)());
 
 // Listen for events
 _AddContact2.default.handleSubmit();
 _AddContact2.default.handleCreateContactBtn();
+_SearchContact2.default.handleSearchContact();
 
 /***/ }),
 /* 98 */
@@ -27034,15 +27059,16 @@ var CreateContact = function () {
       var form = document.getElementById('add-contact');
 
       if (firstNameField && lastNameField && emailField && phoneField && typeField) {
-        var firstName = firstNameField.value;
-        var lastName = lastNameField.value;
+        var firstName = firstNameField.value.toLowerCase();
+        var lastName = lastNameField.value.toLowerCase();
         var email = emailField.value;
         var phone = phoneField.value;
-        var type = typeField.value;
+        var type = typeField.value.toLowerCase();
 
         var contact = {
           first_name: firstName,
           last_name: lastName,
+          name: [firstName, lastName].join(' '),
           email: email,
           phone: phone,
           type: type,
@@ -27095,6 +27121,70 @@ var CreateContact = function () {
 }();
 
 exports.default = CreateContact;
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _SearchContact = __webpack_require__(225);
+
+var _SearchContact2 = _interopRequireDefault(_SearchContact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _SearchContact2.default;
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _store = __webpack_require__(21);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _actions = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var store = (0, _store2.default)();
+
+var SearchContact = function () {
+  function SearchContact() {
+    _classCallCheck(this, SearchContact);
+  }
+
+  _createClass(SearchContact, null, [{
+    key: 'searchContact',
+    value: function searchContact(event) {
+      event.preventDefault();
+      var query = this.value;
+
+      store.dispatch((0, _actions.searchContacts)(query));
+    }
+  }, {
+    key: 'handleSearchContact',
+    value: function handleSearchContact() {
+      var searchField = document.getElementById('search');
+      searchField.addEventListener('change', this.searchContact);
+    }
+  }]);
+
+  return SearchContact;
+}();
+
+exports.default = SearchContact;
 
 /***/ })
 /******/ ]);

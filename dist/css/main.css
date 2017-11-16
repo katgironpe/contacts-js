@@ -58,3 +58,7 @@ body {
 .mdl-card__title .mdl-card__title-text {
   padding: 15px 0 10px 0;;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}

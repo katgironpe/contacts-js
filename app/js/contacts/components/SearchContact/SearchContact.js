@@ -1,19 +1,19 @@
 import configureStore from '../../../store';
-import { removeContact } from '../../../actions';
+import { searchContacts } from '../../../actions';
 
 const store = configureStore();
 
 class SearchContact {
   static searchContact(event) {
     event.preventDefault();
-    const id = this.getAttribute('data-id');
+    const query = this.value;
 
-    //store.dispatch(removeContact(id));
+    store.dispatch(searchContacts(query));
   }
 
   static handleSearchContact() {
-    const searchField = document.getElementById('#search');
-    searchField.addEventListener('click', this.searchContact);
+    const searchField = document.getElementById('search');
+    searchField.addEventListener('change', this.searchContact);
   }
 }
 

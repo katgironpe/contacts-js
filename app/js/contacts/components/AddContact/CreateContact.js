@@ -15,15 +15,16 @@ class CreateContact {
     const form = document.getElementById('add-contact');
 
     if (firstNameField && lastNameField && emailField && phoneField && typeField ) {
-      const firstName = firstNameField.value;
-      const lastName = lastNameField.value;
+      const firstName = firstNameField.value.toLowerCase();
+      const lastName = lastNameField.value.toLowerCase();
       const email = emailField.value;
       const phone = phoneField.value;
-      const type = typeField.value;
+      const type = typeField.value.toLowerCase();
 
       const contact = {
         first_name: firstName,
         last_name: lastName,
+        name: [firstName, lastName].join(' '),
         email: email,
         phone: phone,
         type: type,

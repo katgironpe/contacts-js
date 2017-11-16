@@ -127,10 +127,30 @@ export const unfaveContact = (contactId) => {
   };
 };
 
-export const searchContacts = () => {
+export const searchContacts = (query) => {
   return dispatch => {
+    const ref = firebase.database().ref('/contacts');
+
+    console.log('SEARCHING FOR', query);
+
     dispatch({
       type: CONTACTS_SEARCHING
+    });
+
+    ref.orderByChild('last_name').startAt(query).endAt(query).on('value', function(snapshot) {
+      dispatch({
+        type: CONTACTS_SEARCHED,
+        contacts: snapshot.val()
+      });
+
+      // Display the contact list
+      new List(snapshot.val()).displayContacts();
+
+      // Listen for click events
+      DeleteContact.handleClickContact();
+      FaveContact.handleClickContact();
+    }, function (error) {
+      console.log(`Error ${error.code}`);
     });
   };
 };
